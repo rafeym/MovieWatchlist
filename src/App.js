@@ -7,17 +7,21 @@ import { Add } from './components/Add'
 import './App.css'
 import './lib/font-awesome/css/all.min.css'
 
+import { GlobalProvider } from './context/globalstate'
+
 function App() {
   return (
-    <Router>
-      <Header />
-      <Switch>
-        <Route exact path='/' component={Watchlist} />
-        <Route exact path='/watched' component={Watched} />
-        <Route exact path='/add' component={Add} />
-        <Route render={() => '404 Page not found'} />
-      </Switch>
-    </Router>
+    <GlobalProvider>
+      <Router>
+        <Header />
+        <Switch>
+          <Route exact path='/' component={Watchlist} />
+          <Route exact path='/watched' component={Watched} />
+          <Route exact path='/add' component={Add} />
+          <Route render={() => '404 Page not found'} />
+        </Switch>
+      </Router>
+    </GlobalProvider>
   )
 }
 
